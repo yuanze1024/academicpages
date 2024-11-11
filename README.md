@@ -33,7 +33,7 @@ When you are initially working your website, it is very useful to be able to pre
     gem install bundler
     ```
 1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+1. Run `bundle exec jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
 
 If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
 
@@ -44,12 +44,12 @@ Working from a different OS, or just want to avoid installing dependencies? You 
 Start by build the container:
 
 ```bash
-docker build -t jekyll-site .
+docker build -t yuanze-jekyll-site .
 ```
 
 Next, run the container:
 ```bash
-docker run -p 4000:4000 --rm -v $(pwd):/usr/src/app jekyll-site
+docker run --net host --rm -v $(pwd):/usr/src/app yuanze-jekyll-site
 ```
 
 # Maintenance

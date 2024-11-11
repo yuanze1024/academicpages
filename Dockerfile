@@ -1,8 +1,12 @@
 # Base image: Ruby with necessary dependencies for Jekyll
-FROM ruby:3.2
+FROM ccr-23gxup9u-vpc.cnc.bj.baidubce.com/common/ruby:3.2
+
+COPY apt_source.txt /etc/apt/sources.list
+
+RUN gpg --keyserver keyserver.ubuntu.com --recv 871920D1991BC93C && gpg --export --armor 871920D1991BC93C | apt-key add -
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN rm /etc/apt/sources.list.d/debian.sources && apt-get update && apt-get install -y \
     build-essential \
     nodejs \
     && rm -rf /var/lib/apt/lists/*
@@ -20,5 +24,5 @@ RUN gem install bundler:2.3.26 && bundle install
 EXPOSE 4000
 
 # Command to serve the Jekyll site
-CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--watch"]
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "localhost", "--watch"]
 

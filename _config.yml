@@ -13,7 +13,7 @@ title_separator          : "-"
 name                     : &name "YuanZe"
 description              : &description "My academic page"
 url                      : https://yuanze1024.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "academicpages" # the subpath of your site, e.g. "/blog"
+baseurl                  : "/academicpages" # the subpath of your site, e.g. "/blog"
 repository               : "yuanze1024/academicpages"
 
 # Site Author - The following control what appear as part of the author content on the side bar.

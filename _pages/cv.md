@@ -11,17 +11,17 @@ redirect_from:
 
 Education
 ======
-* Looking for Ph.D project!
-* M.S. in Beihang University, 2022-2025
+* Ph.D. student in The University of Hong Kong, 2025.06-Present. Supervised by Prof. Xiaojuan Qi.
+* M.S. in Beihang University, 2022-2025.01. Supervised by Prof. Ke Xu.
 * B.S. in Dalian University of Technology, 2016-2020
 
 Work experience
 ======
-* Summer 2023: Intern Researcher
+* Summer 2023 - Present: Intern Researcher
   * Vast AI
   * Duties includes: Software Engineering & AI Research
 
-* Summer 2020: Software Engineer
+* Summer 2020 - Summer 2021: Software Engineer
   * Shenzhen TP-Link Co., Ltd
   * Duties included: Java Web
   

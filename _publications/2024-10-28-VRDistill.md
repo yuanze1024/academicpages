@@ -3,7 +3,7 @@ title: "VRDistill: Vote Refinement Distillation for Efficient Indoor 3D Object D
 collection: publications
 category: conferences
 permalink: /publication/2024-10-28-VRDistill
-excerpt: 'A knowledge distillation framework on 3D Object Detection (especially indoor).'
+excerpt: '**First Author** <br> A knowledge distillation framework on 3D Object Detection (especially indoor).'
 date: 2024-10-28
 venue: "MM '24: Proceedings of the 32nd ACM International Conference on Multimedia"
 paperurl: 'https://dl.acm.org/doi/abs/10.1145/3664647.3681121'

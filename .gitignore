@@ -16,3 +16,4 @@ package-lock.json
 vendor/
 
 apt_source.txt
+Dockerfile

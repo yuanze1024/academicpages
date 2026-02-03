@@ -12,8 +12,8 @@ title                    : "YuanZe / Academic Page"
 title_separator          : "-"
 name                     : &name "YuanZe"
 description              : &description "My academic page"
-url                      : https://yuanze1024.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/academicpages" # the subpath of your site, e.g. "/blog"
+url                      : https://yuanze.me # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "yuanze1024/academicpages"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
@@ -24,9 +24,9 @@ author:
   avatar           : "profile.png"
   name             : "Yuan Ze (袁泽)"
   pronouns         : # example: "she/her"  
-  bio              : "A student major at 3D CV"
-  location         : "Earth"
-  employer         : "Beihang University"
+  bio              : "PhD Student at HKU, interested in 3D AIGC, and Agents"
+  location         : "SAR of Hong Kong"
+  employer         : "The University of Hong Kong"
   uri              : # URL
   email            : "yuanze1024@gmail.com" 
 

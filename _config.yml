@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "YuanZe / Academic Page"
+title                    : "YuanZe / Personal Website"
 title_separator          : "-"
 name                     : &name "YuanZe"
-description              : &description "My academic page"
+description              : &description "My personal website"
 url                      : https://yuanze.me # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "yuanze1024/academicpages"

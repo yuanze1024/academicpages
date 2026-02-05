@@ -11,8 +11,8 @@ redirect_from:
 
 Education
 ======
-* Ph.D. student in The University of Hong Kong, 2025.06-Present. Supervised by Prof. Xiaojuan Qi.
-* M.S. in Beihang University, 2022-2025.01. Supervised by Prof. Ke Xu.
+* Ph.D. student in The University of Hong Kong, 2025.06-Present. Supervised by [Prof. Xiaojuan Qi](https://xjqi.github.io/).
+* M.S. in Beihang University, 2022-2025.01. Supervised by [Prof. Ke Xu](https://scse.buaa.edu.cn/info/1387/10322.htm).
 * B.S. in Dalian University of Technology, 2016-2020
 
 Work experience

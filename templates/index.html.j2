@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="{{ profile.site.language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f3">
+    <meta name="description" content="{{ profile.site.description }}">
+    <link rel="canonical" href="{{ profile.site.url }}/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/site.css">
+    <script src="/assets/site.js" defer></script>
+
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="{{ profile.person.name }} | {{ profile.person.role }} at {{ profile.person.affiliation_short }}">
+    <meta property="og:description" content="{{ profile.site.description }}">
+    <meta property="og:url" content="{{ profile.site.url }}/">
+    <meta property="og:image" content="{{ profile.site.url }}{{ profile.portrait_asset.src }}">
+    <meta name="twitter:card" content="summary">
+
+    <title>{{ profile.person.name }} | {{ profile.person.role }} at {{ profile.person.affiliation_short }}</title>
+
+    <script type="application/ld+json">
+      {{ {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": profile.person.name,
+        "alternateName": profile.person.native_name,
+        "url": profile.site.url,
+        "image": profile.site.url ~ profile.portrait_asset.src,
+        "jobTitle": profile.person.role,
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": profile.person.affiliation
+        },
+        "email": "mailto:" ~ profile.person.email,
+        "sameAs": profile.person.links | map(attribute="url") | list
+      } | tojson }}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="#top" aria-label="{{ profile.person.name }}, back to top">
+          {{ profile.person.name }}
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#background">Background</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero content-shell" id="top" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">{{ profile.person.role }} · {{ profile.person.affiliation_short }}</p>
+          <h1 id="page-title">
+            {{ profile.person.name }}
+            <span lang="zh" class="native-name">({{ profile.person.native_name }})</span>
+          </h1>
+          <p class="tagline">
+            {{ profile.intro.tagline_before }}
+            <span class="colorful-word" aria-label="{{ profile.intro.tagline_colorful }}">
+              {% for letter in profile.intro.tagline_colorful %}<span aria-hidden="true">{{ letter }}</span>{% endfor %}
+            </span>
+            {{ profile.intro.tagline_after }}
+          </p>
+          <div class="bio">
+            {% for paragraph in profile.intro.bio_html %}
+              {{ paragraph | safe }}
+            {% endfor %}
+          </div>
+
+          <div class="contact-actions" aria-label="Profile links">
+            <a class="action-link action-link--primary" href="mailto:{{ profile.person.email }}">Email</a>
+            <span class="wechat-control">
+              <button class="action-link action-link--wechat" type="button" data-wechat="{{ profile.person.wechat }}" aria-describedby="wechat-status">WeChat</button>
+              <span class="copy-toast" id="wechat-status" role="status" aria-live="polite"></span>
+            </span>
+            {% for link in profile.person.links %}
+              <a class="action-link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                {{ link.label }} <span aria-hidden="true">↗</span>
+              </a>
+            {% endfor %}
+            {% if profile.cv_url %}
+              <a class="action-link" href="{{ profile.cv_url }}">CV <span aria-hidden="true">↓</span></a>
+            {% endif %}
+          </div>
+        </div>
+
+        <figure class="portrait">
+          <img
+            src="{{ profile.portrait_asset.src }}"
+            srcset="{{ profile.portrait_asset.srcset }}"
+            sizes="(max-width: 410px) 112px, (max-width: 720px) 128px, 208px"
+            width="{{ profile.portrait_asset.width }}"
+            height="{{ profile.portrait_asset.height }}"
+            alt="{{ profile.person.portrait.alt }}"
+            fetchpriority="high"
+          >
+        </figure>
+      </section>
+
+      <section class="page-section" id="research" aria-labelledby="research-title">
+        <div class="content-shell">
+          <div class="section-heading">
+            <p class="section-index">01</p>
+            <h2 id="research-title">Research</h2>
+          </div>
+          <div class="research-layout">
+            <article class="research-focus">
+              <p class="focus-label">Current direction</p>
+              <h3>{{ profile.research.current_title }}</h3>
+              <p>{{ profile.research.current }}</p>
+            </article>
+            <article class="research-focus">
+              <p class="focus-label">Previous work</p>
+              <h3>{{ profile.research.previous_title }}</h3>
+              <p>{{ profile.research.previous }}</p>
+            </article>
+            <p class="prior-work">{{ profile.research.thread }}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section page-section--surface" id="publications" aria-labelledby="publications-title">
+        <div class="content-shell">
+          <div class="section-heading section-heading--with-note">
+            <div>
+              <p class="section-index">02</p>
+              <h2 id="publications-title">Publications</h2>
+            </div>
+            <a href="{{ profile.person.links[0].url }}" target="_blank" rel="noopener noreferrer">
+              Full list on Google Scholar <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="publication-list">
+            {% for publication in publications %}
+              <article class="publication" id="publication-{{ publication.id }}">
+                <a class="publication-visual-link" href="{{ publication.project_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open the {{ publication.cover_label }} project page">
+                  <div class="publication-visual">
+                    {% if publication.image_asset %}
+                      <img
+                      src="{{ publication.image_asset.src }}"
+                      srcset="{{ publication.image_asset.srcset }}"
+                      sizes="(max-width: 760px) 100vw, 320px"
+                      width="{{ publication.image_asset.width }}"
+                      height="{{ publication.image_asset.height }}"
+                      alt="{{ publication.image_alt }}"
+                        loading="lazy"
+                      >
+                      {% if publication.preview_url %}
+                        <img
+                          class="publication-preview"
+                          data-preview-src="{{ publication.preview_url }}"
+                          alt=""
+                          aria-hidden="true"
+                        >
+                        <span class="preview-hint" aria-hidden="true">Hover to preview</span>
+                      {% endif %}
+                    {% else %}
+                    <div class="paper-cover paper-cover--{{ publication.cover_tone }}" aria-hidden="true">
+                      <span class="paper-cover-label">{{ publication.cover_label }}</span>
+                      <span class="paper-cover-meta">{{ publication.venue }} · {{ publication.year }}</span>
+                    </div>
+                  {% endif %}
+                  </div>
+                </a>
+
+                <div class="publication-copy">
+                  <div class="publication-highlights" aria-label="Publication highlights">
+                    {% for highlight in publication.highlights %}
+                      {% if highlight.tone != "award" %}
+                        <span class="highlight highlight--{{ highlight.tone }}">{{ highlight.label }}</span>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <h3><a href="{{ publication.primary_url }}" target="_blank" rel="noopener noreferrer">{{ publication.title }}</a></h3>
+                  <p class="authors">
+                    {% for author in publication.authors %}
+                      {% if author.self %}<strong>{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                  </p>
+                  <p class="venue">
+                    <strong>{{ publication.venue }}</strong> · {{ publication.track }} · {{ publication.year }}
+                    {% for highlight in publication.highlights %}
+                      {% if highlight.tone == "award" %}
+                        <strong class="publication-award">({{ highlight.label }})</strong>
+                      {% endif %}
+                    {% endfor %}
+                  </p>
+                  <p class="publication-summary">{{ publication.summary }}</p>
+                  <div class="publication-links" aria-label="Links for {{ publication.title }}">
+                    {% for link in publication.links %}
+                      <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                        {{ link.label }} <span aria-hidden="true">↗</span>
+                      </a>
+                    {% endfor %}
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="background" aria-labelledby="background-title">
+        <div class="content-shell">
+          <div class="section-heading">
+            <p class="section-index">03</p>
+            <h2 id="background-title">Background</h2>
+          </div>
+
+          <div class="timeline-board">
+            <div class="timeline-lane-label timeline-lane-label--education">Education</div>
+            <div class="timeline-lane-label timeline-lane-label--experience">Experience</div>
+            {% for item in profile.background %}
+              <div class="timeline-row timeline-row--{{ item.kind }}">
+                <article class="timeline-event">
+                  <p class="timeline-kind">{{ item.kind }}</p>
+                  <p class="timeline-period">{{ item.period }}</p>
+                  {% if item.kind == "education" %}
+                    <h3>{{ item.degree }} · {{ item.institution }}</h3>
+                    {% if item.advisor %}
+                      <p class="timeline-detail">Advised by <a href="{{ item.advisor.url }}" target="_blank" rel="noopener noreferrer">{{ item.advisor.name }}</a>.</p>
+                    {% endif %}
+                  {% else %}
+                    <h3>{{ item.role }} · {{ item.organization }}</h3>
+                    <p class="timeline-detail">{{ item.detail }}</p>
+                  {% endif %}
+                </article>
+                <span class="timeline-marker" aria-hidden="true"></span>
+              </div>
+            {% endfor %}
+          </div>
+
+          <p class="personal-note">{{ profile.personal }}</p>
+        </div>
+      </section>
+
+      <section class="page-section page-section--contact" id="contact" aria-labelledby="contact-title">
+        <div class="content-shell contact-layout">
+          <div>
+            <p class="section-index">04</p>
+            <h2 id="contact-title">Contact</h2>
+            <p>For research conversations and collaborations, email is the best way to reach me.</p>
+          </div>
+          <dl class="contact-list">
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:{{ profile.person.email }}">{{ profile.person.email }}</a></dd>
+            </div>
+            <div>
+              <dt>WeChat</dt>
+              <dd><span class="contact-value">{{ profile.person.wechat }}</span></dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>{{ profile.person.location }}</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="content-shell">
+        <p>© {{ profile.current_year }} {{ profile.person.name }}</p>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

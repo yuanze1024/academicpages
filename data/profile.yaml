@@ -1,0 +1,79 @@
+site:
+  title: "Yuan Ze"
+  url: "https://yuanze.me"
+  language: "en"
+  description: "Yuan Ze is a PhD student at HKU exploring controllable video generation, with prior work in 3D texture generation."
+
+person:
+  name: "Yuan Ze"
+  native_name: "袁泽"
+  role: "PhD Student"
+  affiliation: "The University of Hong Kong"
+  affiliation_short: "HKU"
+  location: "Hong Kong SAR"
+  email: "yuanze1024@gmail.com"
+  wechat: "yz-_-1998"
+  portrait:
+    source: "media/profile.png"
+    alt: "Yuan Ze at SIGGRAPH Asia 2024"
+  links:
+    - label: "Google Scholar"
+      url: "https://scholar.google.com/citations?user=IcLy55oAAAAJ"
+    - label: "GitHub"
+      url: "https://github.com/yuanze1024"
+    - label: "ORCID"
+      url: "https://orcid.org/0009-0005-6673-9670"
+
+intro:
+  tagline_before: "Generating"
+  tagline_colorful: "colorful"
+  tagline_after: "things, from 3D textures to videos."
+  bio:
+    - "I am a PhD student at **The University of Hong Kong**, advised by [**Prof. Xiaojuan Qi**](https://xjqi.github.io/)."
+    - "I graduated from **Beihang University (M.S.)** in Jan 2025, supervised by [**Prof. Ke Xu**](https://scse.buaa.edu.cn/info/1387/10322.htm)."
+    - "I have always been interested in generating **colorful things**. My previous work focused on **3D texture generation**, and I am now exploring **video generation**."
+
+research:
+  current_title: "Video Generation"
+  current: "I am currently exploring video generation and how generative models can produce coherent, vivid, and controllable dynamic content."
+  previous_title: "3D Texture Generation"
+  previous: "My previous research generated high-quality and consistent textures for 3D assets by building on the visual priors of image and video diffusion models."
+  thread: "The common thread is simple: I enjoy generating colorful things. Moving from 3D textures to videos feels like a natural continuation of that interest."
+
+education:
+  - period: "2025.06–Present"
+    sort_year: 2025
+    degree: "Ph.D. Student"
+    institution: "The University of Hong Kong"
+    advisor:
+      name: "Prof. Xiaojuan Qi"
+      url: "https://xjqi.github.io/"
+  - period: "2022–2025.01"
+    sort_year: 2022
+    degree: "M.S."
+    institution: "Beihang University"
+    advisor:
+      name: "Prof. Ke Xu"
+      url: "https://scse.buaa.edu.cn/info/1387/10322.htm"
+  - period: "2016–2020"
+    sort_year: 2016
+    degree: "B.S."
+    institution: "Dalian University of Technology"
+    advisor: null
+
+experience:
+  - period: "2023–Present"
+    sort_year: 2023
+    role: "Research Intern"
+    organization: "Vast AI"
+    detail: "AI research and software engineering."
+  - period: "2020–2021"
+    sort_year: 2020
+    role: "Software Engineer"
+    organization: "TP-Link"
+    detail: "Java web development."
+
+personal: "I hold JLPT N2 and enjoy Japanese dramas, films, and anime."
+
+# Set this to a file such as "media/yuan-ze-cv.pdf" when a CV is available.
+cv_pdf: null

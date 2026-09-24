@@ -34,6 +34,7 @@ def test_build_renders_single_page_content(tmp_path: Path) -> None:
         "contact",
     ]
     assert [item.get("id") for item in soup.select("article.publication")] == [
+        "publication-shaderagent",
         "publication-seqtex",
         "publication-texgen",
         "publication-vrdistill",
@@ -42,7 +43,10 @@ def test_build_renders_single_page_content(tmp_path: Path) -> None:
     assert soup.select_one(".colorful-word").get("aria-label") == "colorful"
     assert soup.select_one(".bio a[href='https://xjqi.github.io/']")
     assert soup.select_one(".bio a[href='https://scse.buaa.edu.cn/info/1387/10322.htm']")
-    assert not soup.select('a[href$=".pdf"]:not([href*="arxiv"])')
+    # PDFs must be hosted elsewhere, not committed into this repo.
+    assert not soup.select(
+        'a[href$=".pdf"]:not([href*="arxiv"]):not([href*="github.com"][href*="/releases/"])'
+    )
 
 
 def test_generated_assets_and_internal_links_exist(tmp_path: Path) -> None:
